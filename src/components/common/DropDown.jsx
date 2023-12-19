@@ -5,13 +5,13 @@ import { MenuItem, Select, FormControl, InputLabel ,styled} from '@mui/material'
 
 const Menu=styled(FormControl)`
   background:#ffffff;
-  height:23px;
+  height:25px;
   width:30%;
   border-radius:1px;
   display:flex;
   align-item:center;
   justify-content:space-between;
-  padding: -4.5px 14px;
+  padding: 4.5px 14p
   cursor:pointer;
 `
 const OptionSelect=styled(Select)`
