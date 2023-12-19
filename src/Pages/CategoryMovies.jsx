@@ -1,5 +1,4 @@
 import {useState,useEffect} from 'react';
-
 import Header from "../components/common/Header"
 import { Box ,Typography,styled,Divider} from "@mui/material"
 import { categoryMovies } from '../services/api';
@@ -49,8 +48,6 @@ const CategoryMovies = () => {
             let response = await categoryMovies(API_URL);
             setMovies(response.results);
         }
-
-
         let API_URL;
         //Logic for header menus selection
         if (search.includes('popular')){
@@ -58,7 +55,7 @@ const CategoryMovies = () => {
         }else if(search.includes('upcoming')){
             API_URL=UPCOMING_API_URL;
         }
-        else if(search.includes('toprated')){
+        else if(search.includes('topRated')){
             API_URL=TOPRATED_API_URL;
         }
         getData(API_URL);

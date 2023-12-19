@@ -1,8 +1,8 @@
 
-import { List,ListItem,Typography,styled } from "@mui/material";
-
+import { List,ListItem,Typography,styled,Box } from "@mui/material";
+import { Hidden } from '@mui/material';
 import {Star} from '@mui/icons-material';
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 const Banner=styled('img')({
     width:47
 })
@@ -11,22 +11,49 @@ const Conatiner=styled(List)`
     display:flex;
 `
 const MoviesList=({movies}) =>{
+    const isSmallScreen = useMediaQuery('(max-width:450px)');
+
     return(
        <>
-        {
+       <Box>
+        {isSmallScreen ? (
+          <Hidden implementation="css" css={{ width: '25%' }}>
+           {
+           movies.map((movie) => (
+                <Conatiner>
+                    <ListItem>
+                        <Banner src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}  alt="poster" />
+                    </ListItem>
+
+                    <ListItem>
+                    {/* original_title=movie name  */}
+                        <Typography>{movie.original_title}</Typography>
+                    </ListItem>
+                  
+            </Conatiner>
+            ))
+           }
+          </Hidden>
+        ) : (
+          
+          <Hidden implementation="css" css={{ width: '50%' }}>
+            {
             movies.map((movie) => (
                 <Conatiner>
                     <ListItem>
                         <Banner src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}  alt="poster" />
                     </ListItem>
+
                     <ListItem>
                     {/* original_title=movie name  */}
                         <Typography>{movie.original_title}</Typography>
                     </ListItem>
+                    
                     <ListItem>
-                        <Star color="warning"/>
+                        <Star style={{positiion:'absolute'}}  color="warning"/>
                         <Typography>{movie.vote_average}</Typography>
                     </ListItem>
+
                     <ListItem>
                         <Typography>{movie.release_date}</Typography>
                     </ListItem>
@@ -34,6 +61,10 @@ const MoviesList=({movies}) =>{
 
             ))
         }
+          </Hidden>
+        )}
+      </Box>
+        
        </>
     )
 }

@@ -1,6 +1,10 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Box, styled } from '@mui/material';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import { Hidden } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const responsive = {
   desktop: {
@@ -17,36 +21,79 @@ const responsive = {
   }
 };
 
-
 const StyledBanner = styled('img')({
   width: '100%'
 })
+
+const Moviename = styled(Box)`
+  text-align:center;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size:30px;
+  position:absolute;
+  transform:translate(43%,-128%);
+  top: '50%',
+  left: '50%',
+  margin-bottom:30px;
+  max-width: 200px;
+  display:flex;
+  justify-content:center;
+`
+const Check = styled(Box)`
+  position:relative;
+`
 const Banner = ({ movies }) => {
+  const navigate = useNavigate();
+  const isSmallScreen = useMediaQuery('(max-width:800px)');
+
+  function handleNavigate(id) {
+    {console.log("bannrer",id)}
+    navigate(`${id}`);
+  }
   return (
     <Box style={{ width: '65%' }}>
-      
       <Carousel
         responsive={responsive}
         swipeable={false}
         draggable={false}
-        showDots={true}
+
         infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={3000}
         slidesToSlide={1}
       >
         {
           movies.map((movie) => (
-            <StyledBanner
-            // https://image.tmdb.org/t/p/original/: This is the base URL for accessing TMDb images.
-            // ${movie.backdrop_path}: This is the specific path to the backdrop image for the given movie.
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-              alt="banner"
-            />
+            <Check >
+              <Box>
+                {isSmallScreen ? (
+                  <Hidden >
+                    <button onClick={() => handleNavigate(movie.id)}  style={{ outline: 'none', border: 'none', background: 'none', cursor: 'pointer' }}>
+                      <StyledBanner sx={{ maxWidth: '100%' }}
+                      src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                      alt="poster"
+                    /></button>
+                  </Hidden>
+                ) : (
+                <Hidden    >
+                  <button onClick={() => handleNavigate(movie.id)}  style={{ outline: 'none', border: 'none', background: 'none', cursor: 'pointer' }}>
+                    <StyledBanner
+                      // https://image.tmdb.org/t/p/original/: This is the base URL for accessing TMDb images.
+                      // ${movie.backdrop_path}: This is the specific path to the backdrop image for the given movie.
+                      src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                      alt="poster"
+                    />
+                    <Moviename>
+                      <PlayCircleIcon color="#cfd8dc" fontSize="large" />
+                      <Box>{movie.original_title}</Box>
+                    </Moviename></button>                    
+                  </Hidden>
+                )}
+              </Box>
+            </Check>
           ))
         }
       </Carousel>
     </Box>
+  
   );
 };
 
