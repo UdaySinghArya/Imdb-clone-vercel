@@ -148,27 +148,9 @@ const HeaderMenu = ({ handleToggle, anchorRef }) => {
                           </Typography>
                         </div>
                       )}
-                    </div>
-                    
+                    </div>                 
                   </Box>
                 </Grid>
-
-                {/* Second Grid */}
-                {/* <Grid item xs={4} sx={{ display: 'flex', textAlign: 'center', JustifyContent: 'center' }}>
-                  <TvIcon color="warning" fontSize="large" />
-                  <Box>
-                    <Typography sx={{ fontSize: '25px', marginLeft: '15px', fontStyle: "bold", color: 'white' }}>TV Shows</Typography>
-                  </Box>
-                </Grid> */}
-
-                {/* Third Grid */}
-                {/* <Grid item xs={4} sx={{ display: 'flex', textAlign: 'center', JustifyContent: 'center' }}>
-                  <StarsRoundedIcon color="warning" fontSize="large" />
-                  <Box>
-                    <Typography sx={{ fontSize: '25px', marginLeft: '15px', fontStyle: "bold", color: 'white' }}>Awards & Events</Typography>
-                  </Box>
-                </Grid>
-              </Grid> */}
             </Box>
           </Container>
         </Box>

@@ -105,7 +105,6 @@ const Header = () => {
                             <Box sx={{
                                 display: 'flex',
                                 width: '100%',
-                                border: '2px solid red',
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
@@ -114,9 +113,9 @@ const Header = () => {
                                 {/* Search Text Field */}
                                 <InputBase sx={{
                                     background: '#ffffff',
-                                    height: '30px',
+                                    height: '23px',
                                     width: '60%',
-                                    borderRadius: '4px',
+                                    borderRadius: '1px',
                                     maxWidth: '70%',
                                     display: 'flex',
                                     padding: '2px'

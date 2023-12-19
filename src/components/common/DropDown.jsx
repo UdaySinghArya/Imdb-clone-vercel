@@ -5,17 +5,17 @@ import { MenuItem, Select, FormControl, InputLabel ,styled} from '@mui/material'
 
 const Menu=styled(FormControl)`
   background:#ffffff;
-  height:30px;
-  width:40%;
-  border-radius:5px;
+  height:23px;
+  width:30%;
+  border-radius:1px;
   display:flex;
   align-item:center;
   justify-content:space-between;
-  padding:2px 2px;
+  padding: -4.5px 14px;
   cursor:pointer;
 `
 const OptionSelect=styled(Select)`
-  font-size:12px;
+  font-size:10px;
 `
 const DropDown = () => {
   const [selectedOption, setSelectedOption] = useState('');
