@@ -16,7 +16,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
-
 import DropDown from '../common/DropDown'
 import { Hidden } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -99,6 +98,7 @@ const Header = () => {
                 <Box>
                     {isSmallScreen ? (
                         <Hidden implementation="css" css={{ width: '25%' }}>
+                            <SearchIcon fontSize="medium" style={{color:'white'}}/>
                         </Hidden>
                     ) : (
                         <Hidden implementation="css" css={{ width: '75%' }}>
@@ -108,7 +108,7 @@ const Header = () => {
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
-                                <DropDown />
+                                <DropDown  ></DropDown>
 
                                 {/* Search Text Field */}
                                 <InputBase sx={{

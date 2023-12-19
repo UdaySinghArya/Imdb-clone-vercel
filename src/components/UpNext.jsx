@@ -34,41 +34,40 @@ const IconAndTime = styled(Box)`
 `
 const UpNext = ({ movies }) => {
     const isSmallScreen = useMediaQuery('(max-width:1024px)');
-
     return (
         <Component>
-            <Typography sx={{color:'white'}}>UpNext</Typography>
+            
             {
-                movies.splice(0, 3).map(movie => (
-                    <Box>
-                        
-                        {isSmallScreen ? (
-                            // Content that will be hidden on smaller screens
+        <Box>                      
+            {isSmallScreen ? (
+            // Content that will be hidden on smaller screens
+            <Hidden implementation="css" css={{ width: '25%' }}>
+                
+            </Hidden>
+        ) : (
+            // Content that will be hidden on larger screens
+            <Hidden implementation="css" css={{ width: '50%' }}>
+                <Typography sx={{color:'white'}}>UpNext</Typography>
+                {movies.splice(0, 3).map(movie => (
+                <Wrapper >
+                    {/* poster_path=Poster */}
+                    <Poster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="poster" />
+                    {/* original_title =Movie Name */}
+                    <PosterName>
+                        <IconAndTime>
+                            <Typography><PlayCircleOutlineIcon color="#cfd8dc" fontSize="large" /></Typography>
+                            <Typography>{movie.runtime}</Typography>
+                        </IconAndTime>
+                        <Typography>{movie.original_title}</Typography>
+                    </PosterName>
 
-                            <Hidden implementation="css" css={{ width: '25%' }}>
-                            </Hidden>
-                        ) : (
-                            // Content that will be hidden on larger screens
-                            <Hidden implementation="css" css={{ width: '50%' }}>
-                                
-                                <Wrapper>
-                                    {/* poster_path=Poster */}
-                                    <Poster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="poster" />
-                                    {/* original_title =Movie Name */}
-                                    <PosterName>
-                                        <IconAndTime>
-                                            <Typography><PlayCircleOutlineIcon color="#cfd8dc" fontSize="large" /></Typography>
-                                            <Typography>{movie.runtime}</Typography>
-                                        </IconAndTime>
-                                        <Typography>{movie.original_title}</Typography>
-                                    </PosterName>
-
-                                </Wrapper>
-                            </Hidden>
-                        )}
-                    </Box>
+                </Wrapper>
                 ))
-            }
+                }
+            </Hidden>
+        )}
+    </Box>
+}
         </Component>
     )
 }

@@ -44,14 +44,14 @@ const Check = styled(Box)`
 `
 const Banner = ({ movies }) => {
   const navigate = useNavigate();
-  const isSmallScreen = useMediaQuery('(max-width:800px)');
+  const isSmallScreen = useMediaQuery('(max-width:1024px)');
 
   function handleNavigate(id) {
     {console.log("bannrer",id)}
     navigate(`${id}`);
   }
   return (
-    <Box style={{ width: '65%' }}>
+    <Box style={{ width: isSmallScreen ? '100%' : '65%' }}>
       <Carousel
         responsive={responsive}
         swipeable={false}
