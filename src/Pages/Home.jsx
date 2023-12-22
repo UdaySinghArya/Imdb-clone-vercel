@@ -11,6 +11,7 @@ import NowPlaying from '../components/NowPlaying';
 import Trending from '../components/Trending';
 import Tvshows from '../components/Tvshows';
 
+
 const Wrapper = styled(Box)`
     display:flex;
     padding:20px 0;
@@ -60,7 +61,7 @@ const Home = () => {
                 <NowPlaying movies={movies} />
                  <Trending trendmovie={trendmovie} />
                 <Tvshows tvshows={tvshows} />  
-            </Container>
+            </Container>       
         </>
     )
 }

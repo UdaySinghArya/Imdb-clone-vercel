@@ -1,7 +1,6 @@
 import 'react-multi-carousel/lib/styles.css';
-import { Box, Typography, styled } from '@mui/material';
+import { Box, Typography, styled ,Container,Hidden} from '@mui/material';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import { Hidden } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
@@ -38,7 +37,8 @@ const BannerDetails = ({ movies, id }) => {
 
     const hasMatchingMovie = movies.some((movie) => movie.id === intid);
     return (
-        <Box style={{ width: '100%' }}>   
+        <Container>
+            <Box style={{ width: '100%' }}>
                 {movies.map((movie) => {
                     // console.log(typeof movie.id);
                     if (movie.id === intid) {
@@ -71,10 +71,8 @@ const BannerDetails = ({ movies, id }) => {
                     }
                     return null;
                 })}
-                {!hasMatchingMovie && (
-                    <Typography sx={{ color: 'white' }}>Not Giving</Typography>
-                )}
-        </Box>
+            </Box>
+        </Container>
     );
 };
 

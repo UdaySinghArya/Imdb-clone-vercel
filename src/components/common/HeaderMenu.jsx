@@ -10,7 +10,8 @@ import { logoURL } from '../../constants/constant';
 import CloseIcon from '@mui/icons-material/Close';
 import { Hidden } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import TvOutlinedIcon from '@mui/icons-material/TvOutlined';
+import StarsRoundedIcon from '@mui/icons-material/StarsRounded';
 const HeaderMenu = ({ handleToggle, anchorRef }) => {
   const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
@@ -19,10 +20,10 @@ const HeaderMenu = ({ handleToggle, anchorRef }) => {
     setShowOptions(!showOptions);
   };
 
-    const handleOptionClick = (option) => {
-    
+  const handleOptionClick = (option) => {
+
     console.log(`Selected option: ${option}`);
-    
+
     switch (option) {
       case 'popular':
         navigate(`${routePath.categories}?category=popular`);
@@ -57,20 +58,20 @@ const HeaderMenu = ({ handleToggle, anchorRef }) => {
     <>
       <Box>
         {isSmallScreen ? (
-          
+
 
           <Hidden implementation="css" css={{ width: '25%' }}>
             <Button onClick={handleOpen} variant="outlined">
-              <Menu />
+              <Menu style={{ color: "white" }} />
 
             </Button>
           </Hidden>
         ) : (
-          
+
           <Hidden implementation="css" css={{ width: '50%' }}>
             <Button onClick={handleOpen} variant="outlined">
-              <Menu />
-              <Typography>Menu</Typography>
+              <Menu style={{ color: "white" }} />
+              <Typography sx={{ color: 'white' }}>Menu</Typography>
             </Button>
           </Hidden>
         )}
@@ -103,17 +104,15 @@ const HeaderMenu = ({ handleToggle, anchorRef }) => {
                 <CloseIcon fontSize='large' color='warning' />
               </Button>
             </Box>
-
             <Box sx={{ flexGrow: 1, marginTop: '30px' }}>
-                                  
+              <Grid container spacing={2} sx={{position:'fixed', display: 'flex', alignItems: 'center', textAlign: 'center' }}>
 
-                {/* First Grid */}
-                <Grid item xs={12} sx={{ display: 'flex', textAlign: 'center', JustifyContent: 'center' }}>
-                  <LocalMoviesIcon color="warning" fontSize="large" />
-                  <Box>
-
+                {/* Section 1 */}
+                <Grid item xs={4}>
                   {/* Menu */}
-                    <div>
+                  <div>
+                    <Box sx={{display:'flex'}}>
+                      <LocalMoviesIcon color="warning" fontSize="large" />
                       <Typography
                         sx={{
                           fontSize: '25px',
@@ -126,31 +125,81 @@ const HeaderMenu = ({ handleToggle, anchorRef }) => {
                       >
                         Movies
                       </Typography>
-                      {showOptions && (
-                        <div>
-                          <Typography
-                            sx={{ marginLeft: '30px', color: 'white', cursor: 'pointer' }}
-                            onClick={() => handleOptionClick('popular')}
-                          >
-                            Popular
-                          </Typography>
-                          <Typography
-                            sx={{ marginLeft: '30px', color: 'white', cursor: 'pointer' }}
-                            onClick={() => handleOptionClick('topRated')}
-                          >
-                            Top Rated
-                          </Typography>
-                          <Typography
-                            sx={{ marginLeft: '30px', color: 'white', cursor: 'pointer' }}
-                            onClick={() => handleOptionClick('upcoming')}
-                          >
-                            Upcoming
-                          </Typography>
-                        </div>
-                      )}
-                    </div>                 
-                  </Box>
+                    </Box>
+                    {showOptions && (
+                      <div style={{ position: 'absolute', zIndex: 1, marginLeft: '4px' }}>
+                        <Typography
+                          sx={{ marginLeft: '30px', color: 'white', cursor: 'pointer' }}
+                          onClick={() => handleOptionClick('popular')}
+                        >
+                          Popular
+                        </Typography>
+                        <Typography
+                          sx={{ marginLeft: '30px', color: 'white', cursor: 'pointer' }}
+                          onClick={() => handleOptionClick('topRated')}
+                        >
+                          Top Rated
+                        </Typography>
+                        <Typography
+                          sx={{ marginLeft: '30px', color: 'white', cursor: 'pointer' }}
+                          onClick={() => handleOptionClick('upcoming')}
+                        >
+                          Upcoming
+                        </Typography>
+                      </div>
+                    )}
+                  </div>
                 </Grid>
+
+                {/* section 2 */}
+                <Grid item xs={4}>
+                  {/* Menu */}
+                  <div style={{ position: 'relative', zIndex: 0 }}>
+                    <Box sx={{display:'flex'}}>
+                      <TvOutlinedIcon color="warning" fontSize="large" />
+                      <Typography
+                        sx={{
+                          fontSize: '25px',
+                          marginLeft: '15px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          cursor: 'pointer',
+                        }}
+                        
+                      >
+                        Tv Shows
+                      </Typography>
+                    </Box>
+                   
+                  </div>
+                </Grid>
+
+
+                {/* Section 3 */}
+                <Grid item xs={4}>
+                  {/* Menu */}
+                  <div style={{ position: 'relative', zIndex: 0 }}>
+                    <Box sx={{display:'flex'}}>
+                      <StarsRoundedIcon color="warning" fontSize="large" />
+                      <Typography
+                        sx={{
+                          fontSize: '25px',
+                          marginLeft: '15px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          cursor: 'pointer',
+                        }}
+                        
+                      >
+                        Awards and Events
+                      </Typography>
+                    </Box>
+                   
+                  </div>
+                </Grid>
+
+              </Grid>
+
             </Box>
           </Container>
         </Box>

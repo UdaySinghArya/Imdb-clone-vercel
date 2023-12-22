@@ -1,5 +1,5 @@
 
-import { AppBar, Toolbar, styled, Box, Typography, InputBase } from '@mui/material';
+import { AppBar, Toolbar, styled, Box, Typography, InputBase,Hidden } from '@mui/material';
 import { logoURL } from '../../constants/constant';
 import { Menu, BookmarkAdd, ExpandMore } from '@mui/icons-material';
 
@@ -8,7 +8,6 @@ import HeaderMenu from './HeaderMenu';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { routePath } from '../../constants/route';
-
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
@@ -17,7 +16,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import DropDown from '../common/DropDown'
-import { Hidden } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const StyledToolBar = styled(Toolbar)`
@@ -93,7 +91,7 @@ const Header = () => {
             <StyledToolBar>
                 <Logo src={logoURL} alt="logo" onClick={() => navigate(routePath.home)} />   {/* <img src={logoURL} alt="logo"/> */}
                 
-                <HeaderMenu handleToggle={handleToggle} open={open} anchorRef={anchorRef} />
+                <HeaderMenu   handleToggle={handleToggle} open={open} anchorRef={anchorRef} />
 
                 <Box>
                     {isSmallScreen ? (

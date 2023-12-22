@@ -56,7 +56,7 @@ const Tvshows = ({ tvshows }) => {
   return (
     <div>
       <Box sx={{display:'flex',alignItems: 'center',marginTop:'40px',marginBottom:'30px'}}>
-        <Typography sx={{fontWeight:'800',fontSize:'27px',color:'yellow'}}>Top Rated Movies</Typography>
+        <Typography sx={{fontWeight:'800',fontSize:'27px',color:'yellow'}}>Trending Tv Movies</Typography>
         <ArrowForwardIosIcon  fontSize='large'  style={{ color: 'white',marginLeft:'20px'}}/>
       </Box>
       <Carousel

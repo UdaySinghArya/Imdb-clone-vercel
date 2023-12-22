@@ -6,23 +6,45 @@ import { categoryMovies } from '../services/api';
 import { NOWPLAYING_API_URL } from '../constants/constant';
 import { Box,Container,styled} from '@mui/material';
 import BannerDetails from './BannerDetails';
+import NowPlaying from './NowPlaying';
+import Trending from './Trending';
+import Tvshows from './Tvshows';
+import { TV_API_URL } from '../constants/constant';
+import { TRENDING_API_URL } from '../constants/constant';
 
 const Wrapper = styled(Box)`
     display:flex;
     padding:20px 0;
 `;
 const Neww=()=>{
-
+    const [trendmovie, setTrendmovie] = useState([]);
+    const [tvshows, setShows] = useState([]);
+    const [movies, setMovies] = useState([]);
     const { id } = useParams();
 
-    {console.log("Neww")}
-    const [movies, setMovies] = useState([]);
     useEffect(() => {
         const getData = async () => {
             let response = await categoryMovies(NOWPLAYING_API_URL);
             setMovies(response.results);
         };
 
+        getData();
+    }, [])
+    useEffect(() => {
+        // getData makes asynchronous function using async and await
+        const getData = async () => {
+            let response = await categoryMovies(TRENDING_API_URL);
+            setTrendmovie(response.results);
+        }
+        getData();
+    }, [])
+
+    useEffect(() => {
+        // getData makes asynchronous function using async and await
+        const getData = async () => {
+            let response = await categoryMovies(TV_API_URL);
+            setShows(response.results);
+        }
         getData();
     }, [])
     return(
@@ -35,7 +57,10 @@ const Neww=()=>{
                     ) : (
                         <p>No ID parameter provided</p>
                     )}
-                </Wrapper>      
+                </Wrapper> 
+                <NowPlaying movies={movies} />
+                 <Trending trendmovie={trendmovie} />
+                <Tvshows tvshows={tvshows} />       
             </Container>
         </>
     )

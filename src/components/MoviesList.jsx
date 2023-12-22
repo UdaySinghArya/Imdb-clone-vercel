@@ -1,6 +1,5 @@
 
-import { List,ListItem,Typography,styled,Box } from "@mui/material";
-import { Hidden } from '@mui/material';
+import { List,ListItem,Typography,styled,Box ,Hidden} from "@mui/material";
 import {Star} from '@mui/icons-material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 const Banner=styled('img')({

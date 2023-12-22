@@ -1,8 +1,7 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Box, styled } from '@mui/material';
+import { Box, styled ,Hidden} from '@mui/material';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import { Hidden } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -47,7 +46,6 @@ const Banner = ({ movies }) => {
   const isSmallScreen = useMediaQuery('(max-width:1024px)');
 
   function handleNavigate(id) {
-    {console.log("bannrer",id)}
     navigate(`${id}`);
   }
   return (
@@ -70,7 +68,8 @@ const Banner = ({ movies }) => {
                       <StyledBanner sx={{ maxWidth: '100%' }}
                       src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                       alt="poster"
-                    /></button>
+                    />
+                    </button>
                   </Hidden>
                 ) : (
                 <Hidden    >
