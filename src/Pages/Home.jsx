@@ -10,7 +10,7 @@ import UpNext from '../components/UpNext';
 import NowPlaying from '../components/NowPlaying';
 import Trending from '../components/Trending';
 import Tvshows from '../components/Tvshows';
-
+import Footer from '../components/Footer';
 
 const Wrapper = styled(Box)`
     display:flex;
@@ -61,7 +61,8 @@ const Home = () => {
                 <NowPlaying movies={movies} />
                  <Trending trendmovie={trendmovie} />
                 <Tvshows tvshows={tvshows} />  
-            </Container>       
+            </Container>  
+            <Footer/>
         </>
     )
 }
