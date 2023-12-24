@@ -60,7 +60,7 @@ const Home = () => {
                 </Wrapper>
                 <NowPlaying movies={movies} />
                  <Trending trendmovie={trendmovie} />
-                <Tvshows tvshows={tvshows} />  
+                <Tvshows tvshows={tvshows} /> 
             </Container>  
             <Footer/>
         </>

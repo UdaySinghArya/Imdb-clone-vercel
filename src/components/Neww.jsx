@@ -4,19 +4,20 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { categoryMovies } from '../services/api';
 import { NOWPLAYING_API_URL } from '../constants/constant';
-import { Box,Container,styled} from '@mui/material';
+import { Box, Container, styled } from '@mui/material';
 import BannerDetails from './BannerDetails';
 import NowPlaying from './NowPlaying';
 import Trending from './Trending';
 import Tvshows from './Tvshows';
-import { TV_API_URL } from '../constants/constant';
-import { TRENDING_API_URL } from '../constants/constant';
+import { TV_API_URL ,TRENDING_API_URL} from '../constants/constant';
+import Footer from './Footer';
+
 
 const Wrapper = styled(Box)`
     display:flex;
     padding:20px 0;
 `;
-const Neww=()=>{
+const Neww = () => {
     const [trendmovie, setTrendmovie] = useState([]);
     const [tvshows, setShows] = useState([]);
     const [movies, setMovies] = useState([]);
@@ -47,7 +48,7 @@ const Neww=()=>{
         }
         getData();
     }, [])
-    return(
+    return (
         <>
             <Header />
             <Container>
@@ -57,10 +58,11 @@ const Neww=()=>{
                     ) : (
                         <p>No ID parameter provided</p>
                     )}
-                </Wrapper> 
+                </Wrapper>
                 <NowPlaying movies={movies} />
-                 <Trending trendmovie={trendmovie} />
-                <Tvshows tvshows={tvshows} />       
+                <Trending trendmovie={trendmovie} />
+                <Tvshows tvshows={tvshows} />
+                <Footer />
             </Container>
         </>
     )
